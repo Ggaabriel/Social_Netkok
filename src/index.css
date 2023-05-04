@@ -11,7 +11,7 @@ body,
     height: 100%;
     width: 100%;
     font-family: "Bellota";
-    @apply text-textColor;
+    @apply text-mainBlack;
     @apply bg-appaBackground;
    
 }

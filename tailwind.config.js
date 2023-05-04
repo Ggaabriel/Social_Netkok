@@ -12,9 +12,8 @@ module.exports = {
                 textColor: "#1A1918",
                 iceColor: "#518AC1",
                 logoC: "#1DA1F2",
-               bgC: "#010101",
-               textC: "#F7FBFA",
-               aTextC: "#202025",
+               mainBlack: "#010101",
+               mainWhite: "#F7FBFA",
             },
             screens: {
                 xs: "320px",
@@ -65,6 +64,7 @@ module.exports = {
                 'experience': "url('/src/assets/images/advantages/experience.png')",
                 'like' : "url('/src/assets/images/likeAnim.png')",
                 'appa' : "url('/src/assets/images/appa.png')",
+                'banner' : "url('/src/assets/images/banner.jpg')",
             }
         },
     },
