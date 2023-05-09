@@ -9,16 +9,22 @@ module.exports = {
                 aangPink: "#F17A76",
                 woodColor: "#C57A6B",
                 borderColor: "#CEB383",
-                textColor: "#1A1918",
+                textColor: "#202025",
                 iceColor: "#518AC1",
                 logoC: "#1DA1F2",
                mainBlack: "#010101",
                mainWhite: "#F7FBFA",
+               gray03: "#E1E2E2",
+               gray05: "#686A6C",
+               acc04: "#DBFF73",
+               acc02: "#B9A9FB",
+               acc06: "#6DD3C2",
             },
             screens: {
                 xs: "320px",
                 s: "768px",
                 md: "1200px",
+                m: "1440px"
             },
             fontFamily: {
                 caveat:["Caveat", "sans-serif"],

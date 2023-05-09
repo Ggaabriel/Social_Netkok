@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bellota:wght@300;400;700&family=Caveat:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -7,11 +7,88 @@
 html,
 body,
 #root,
-.App{
+.App {
     height: 100%;
     width: 100%;
-    font-family: "Bellota";
+    font-family: "Inter", sans-serif;
     @apply text-mainBlack;
     @apply bg-appaBackground;
-   
+}
+.hero {
+    font-size: 104px;
+    font-weight: 800;
+}
+h1 {
+    font-size: 80px;
+    font-weight: 800;
+}
+h2 {
+    font-weight: 800;
+    font-size: 64px;
+}
+h3 {
+    font-weight: 800;
+    font-size: 48px;
+}
+h4 {
+    font-weight: 800;
+    font-size: 32px;
+}
+.body1 {
+    font-weight: 700;
+    font-size: 24px;
+}
+.body2 {
+    font-weight: 500;
+    font-size: 20px;
+}
+.body2b {
+    font-weight: 700;
+    font-size: 20px;
+}
+.title {
+    font-weight: 700;
+    font-size: 18px;
+}
+.base {
+    font-weight: 700;
+    font-size: 16px;
+}
+.basem {
+    font-weight: 500;
+    font-size: 16px;
+}
+.caption {
+    font-weight: 500;
+    font-size: 14px;
+}
+button {
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+}
+.button {
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+}
+
+.selected { 
+    border-image-source: conic-gradient(from 180deg at 50% 50%, #5FFF5C -18.66deg, #FFE249 22.23deg, #F35950 78.14deg, #7C5BFF 159deg, #1CE4FF 202.32deg, #5FFF5C 341.34deg, #FFE249 382.23deg); 
+    border-image-slice: 1;
+    @apply text-mainWhite;
+}
+
+.h-without-300{
+    height: calc(100% - 300px);
+}
+.background01:hover{
+    display: inline-block;
+    background: conic-gradient(from 180deg at 50% 50%, #5FFF5C -18.66deg, #FFE249 22.23deg, #F35950 78.14deg, #7C5BFF 159deg, #1CE4FF 202.32deg, #5FFF5C 341.34deg, #FFE249 382.23deg);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;    
 }

@@ -1,35 +1,49 @@
-import { ReactComponent as Logo } from "./assets/images/logo.svg";
-import { ReactComponent as Burger } from "./assets/images/burger.svg";
+
+import { useEffect, useState } from "react";
+import { SelectedPage } from "./shared/types";
+import Menu from "./components/Menu";
+import Header from "./components/Header";
+import Profile from "./components/Profile";
+import { Route, Routes, useLocation } from "react-router-dom";
+import Home from "./components/Home";
 
 const App = () => {
-    var viewportHeight = window.innerHeight;
-console.log(viewportHeight);
     //привет
+    //flex flex-col justify-start
+    //flex-auto
+    const [selectedPage, setSelectedPage] = useState<SelectedPage>(SelectedPage.Created);
+    const [isMenu, setIsMenu] = useState<boolean>(false);
+    const location = useLocation();
+    const [isTopOfPage, setTopOfPage] = useState<boolean>(true);
+    useEffect(() => {
+        const scrollAction = () => {
+            if (window.scrollY === 0) {
+                setTopOfPage(true);
+            }
+
+            if (window.scrollY !== 0) {
+                setTopOfPage(false);
+            }
+        };
+        window.addEventListener("scroll", scrollAction);
+        return () => window.removeEventListener("scroll", scrollAction);
+    }, []);
+
     return (
-        <div className="App flex flex-col justify-start max-w-[1920px] mx-auto">
-            <header className=" relative bg-banner bg-cover bg-center overflow-hidden bg-no-repeat max-h-[300px] h-full w-[100%] before:bg-black before:w-full before:absolute before:h-full before:opacity-50 before:z-0">
-                <div className="flex justify-between items-center absolute w-full p-5 z-10">
-                    <div className="flex items-center">
-                        <Logo className=" fill-textC" />
-                        <h1 className=" font-inter font-black text-2xl text-logo text-textC">Cry</h1>
-                    </div>
-                    <div>
-                        <button>
-                            <Burger />
-                        </button>
-                    </div>
-                </div>
-            </header>
-            <main className=" text-aTextC flex-auto ">
-                <section className="bg-textC p-5">
-                    <div>1</div>
-                    <div>2</div>
-                    <div>3</div>
-                </section>
-            </main>
-            <footer className="">
-                footer
-            </footer>
+        <div className="App relative max-w-[1920px] mx-auto">
+            {isMenu && <Menu setIsMenu={setIsMenu} isMenu={isMenu} />}
+            {location.pathname === `/profile` 
+            ? 
+            <div className=" relative bg-banner bg-cover bg-center overflow-hidden bg-no-repeat h-[300px] w-[100%] before:bg-black before:w-full before:absolute before:h-full before:opacity-50 before:z-0">
+                <Header isMenu={isMenu} setIsMenu={setIsMenu} />
+            </div>
+            : 
+                <Header isMenu={isMenu} setIsMenu={setIsMenu} />
+            }
+            <Routes>
+                <Route path="profile" element={<Profile setSelectedPage={setSelectedPage} selectedPage={selectedPage}/>}/>
+                <Route path="/" element= { <Home />}/>
+            </Routes>
             
         </div>
     );
