@@ -1,5 +1,6 @@
 import React from "react";
 import { ReactComponent as Arrow } from "../../assets/icons/big arrow rigth.svg";
+import { ReactComponent as Arrow2 } from "../../assets/icons/arrow right.svg";
 import { ReactComponent as Placeholder } from "../../assets/icons/placeholder.svg";
 type Props = {};
 
@@ -61,12 +62,40 @@ const Home = (props: Props) => {
                                     network.
                                 </h1>
                                 <div className="flex justify-between gap-5">
-                                    <button className="w-full h-16 border-2 border-textColor rounded-md ">View NFT</button>
-                                    <button className="w-full h-16 text-mainWhite bg-textColor   rounded-md ">place a bid</button>
+                                    <button className="w-full h-16 border-2 border-textColor rounded-md ">
+                                        View NFT
+                                    </button>
+                                    <button className="w-full h-16 text-mainWhite bg-textColor   rounded-md ">
+                                        place a bid
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div className="grid grid-rows-4 grid-cols-4 w-full h-full">
+                    <div className="">
+                        <h1 className="max-md:text-[56px] max-md:leanding-[56px] max-s:text-[48px] max-s:leading-[48px] ">
+                            Hot NFT
+                            <br />
+                            artists of the
+                            <br />
+                            month.
+                        </h1>
+                        <button className=" bg-mainWhite w-20 h-20  transition hover:shadow-md rounded-full flex items-center justify-center">
+                            <Arrow2 className="stroke-mainBlack w-[18px] h-[15px]" />
+                        </button>
+                    </div>
+                    <div className=""></div>
+                    <div className=""></div>
+                    <div className=""></div>
+                    <div className=""></div>
+                    <div className=""></div>
+                    <div className=""></div>
+                    <div className=""></div>
+                    <div className=""></div>
+                    <div className=""></div>
                 </div>
             </div>
         </div>

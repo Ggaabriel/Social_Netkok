@@ -12,8 +12,8 @@ type Props = {
 const Profile = ({setSelectedPage, selectedPage}: Props) => {
     return (
         <section className=" text-textColor h-without-300">
-            <div className="s:flex w-full h-full">
-                <div className="bg-mainWhite w-full">
+            <div className="s:grid s:grid-cols-2 bg-mainWhite w-full h-full">
+                <div className="bg-mainWhite w-full h-fit">
                     <div className="w-full grid s:grid-cols-3 grid-cols-2 gap-3 px-5 md:px-16 ">
                         <div className="bg-mainBlack rounded-full s:w-52 s:h-52 h-40 w-40 s:-mt-32 -mt-24 z-10 col-start-1 col-end-4 shadow-[0px_0px_0px_12px_rgba(255,255,255,0.5)]"></div>
                         <div className="col-start-1 col-end-3">
@@ -87,7 +87,7 @@ const Profile = ({setSelectedPage, selectedPage}: Props) => {
                             currentPage={SelectedPage.Owned}
                         />
                     </div>
-                    <div className="flex flex-col w-full h-full px-10">
+                    <div className="flex flex-col w-full h-full px-5 md:px-16">
                         <div className="flex justify-between col-start-1 col-end-3 py-10">
                             <button className="base w-full text-gray05 tracking-normal normal-case text-left">
                                 Collected by{" "}
