@@ -73,29 +73,39 @@ const Home = (props: Props) => {
                         </div>
                     </div>
                 </div>
-
-                <div className="grid grid-rows-4 grid-cols-4 w-full h-full">
-                    <div className="">
-                        <h1 className="max-md:text-[56px] max-md:leanding-[56px] max-s:text-[48px] max-s:leading-[48px] ">
-                            Hot NFT
-                            <br />
-                            artists of the
-                            <br />
-                            month.
-                        </h1>
-                        <button className=" bg-mainWhite w-20 h-20  transition hover:shadow-md rounded-full flex items-center justify-center">
-                            <Arrow2 className="stroke-mainBlack w-[18px] h-[15px]" />
-                        </button>
+                <div className="flex w-full h-full">
+                    <div className="grid grid-rows-3 w-full h-full">
+                        <div className="flex px-5 md:px-16 py-16 gap-10">
+                            <h1 className="max-md:text-[56px] max-md:leanding-[56px] max-s:text-[48px] max-s:leading-[48px] ">
+                                Hot NFT
+                                <br />
+                                artists of the
+                                <br />
+                                month.
+                            </h1>
+                            <button className=" bg-mainWhite w-20 h-20  transition shadow-md rounded-full flex items-center justify-center">
+                                <Arrow2 className="stroke-mainBlack w-[18px] h-[15px]" />
+                            </button>
+                        </div>
+                        <div className="body2 px-5 md:px-16 py-16 text-gray05 row-start-3 row-end-4">
+                            We are laying the groundwork for web3 — the next generation of the internet full of
+                            limitless possibilities. Join the millions of creators, collectors, and curators who are on
+                            this journey with you.
+                        </div>
                     </div>
-                    <div className=""></div>
-                    <div className=""></div>
-                    <div className=""></div>
-                    <div className=""></div>
-                    <div className=""></div>
-                    <div className=""></div>
-                    <div className=""></div>
-                    <div className=""></div>
-                    <div className=""></div>
+                    <div className="grid grid-cols-2 grid-rows-4 w-full h-full">
+                        <div className="dodecagon">
+                            <div className="dodecagon-inner"></div>
+                        </div>
+                        <div className=""></div>
+                        <div className=""></div>
+                        <div className=""></div>
+                        <div className=""></div>
+                        <div className=""></div>
+                        <div className=""></div>
+                        <div className=""></div>
+                        <div className=""></div>
+                    </div>
                 </div>
             </div>
         </div>
