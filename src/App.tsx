@@ -30,7 +30,7 @@ const App = () => {
     }, []);
 
     return (
-        <div className="App relative max-w-[1920px] mx-auto">
+        <div className="App relative max-w-[1600px] mx-auto">
             {isMenu && <Menu setIsMenu={setIsMenu} isMenu={isMenu} />}
             {location.pathname === `/profile` 
             ? 

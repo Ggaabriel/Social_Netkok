@@ -10,7 +10,7 @@ type Props = {
 const Menu = ({ setIsMenu, isMenu }: Props) => {
     const menuItemsText = [`Discover`, `Create`, `Feed`, `Help center`, `Blog`];
     return (
-        <div className="z-30 text-textColor h-full w-full max-w-[1920px] mx-auto fixed">
+        <div className="z-30 text-textColor h-full w-full max-w-[1600px] mx-auto fixed">
             <div className="s:flex w-full h-full">
                 <div className="bg-acc02 w-full">
                     <div className="w-full grid s:grid-cols-3 grid-cols-2 gap-3 px-5 md:px-16 "></div>
