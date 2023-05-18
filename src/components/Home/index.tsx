@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ReactComponent as Arrow } from "../../assets/icons/big arrow rigth.svg";
 import { ReactComponent as Arrow2 } from "../../assets/icons/arrow right.svg";
 import { ReactComponent as Placeholder } from "../../assets/icons/placeholder.svg";
@@ -6,6 +6,53 @@ import { ReactComponent as Hexagon } from "../../assets/icons/hexagon.svg";
 type Props = {};
 
 const Home = (props: Props) => {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const imagePath = "topSale.jpg";
+    const [background, setBackground] = useState(rg)
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (canvas !== null) {
+            const context = canvas.getContext("2d");
+            const image = new Image();
+            image.src = imagePath;
+
+            // Когда изображение загружено
+            image.onload = function () {
+                // Установка размеров canvas такими же, как у изображения
+                canvas.width = image.width;
+                canvas.height = image.height;
+                if (context !== null) {
+                    // Рисование изображения на canvas
+                    context.drawImage(image, 0, 0);
+
+                    // Получение данных пикселей изображения
+                    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+                    const pixels = imageData.data;
+
+                    // Переменные для хранения суммы значений цветов
+                    let totalRed = 0;
+                    let totalGreen = 0;
+                    let totalBlue = 0;
+
+                    // Перебор каждого пикселя и суммирование значений цветов
+                    for (let i = 0; i < pixels.length; i += 4) {
+                        totalRed += pixels[i];
+                        totalGreen += pixels[i + 1];
+                        totalBlue += pixels[i + 2];
+                    }
+
+                    // Вычисление среднего значения цветов
+                    const pixelCount = pixels.length / 4;
+                    const averageRed = Math.round(totalRed / pixelCount);
+                    const averageGreen = Math.round(totalGreen / pixelCount);
+                    const averageBlue = Math.round(totalBlue / pixelCount);
+
+                    // Вывод среднего цвета
+                    console.log("Средний цвет: RGB(" + averageRed + ", " + averageGreen + ", " + averageBlue + ")");
+                }
+            };
+        }
+    }, [imagePath]);
     return (
         <div className="bg-mainWhite w-full text-textColor">
             <div className="grid s:grid-cols-2">
@@ -121,6 +168,12 @@ const Home = (props: Props) => {
                     <div className="w-full h-[10vh] col-start-1 col-end-3 flex items-center bg-gray02">
                         <button className="w-5/6 h-10 bg-textColor text-mainWhite mx-auto block">EXPLORE MORE</button>
                     </div>
+                </div>
+            </div>
+            <div className="w-full h-[1000px] grid grid-cols-2">
+                <div className="w-full h-full"></div>
+                <div className="w-full h-full">
+                    <canvas ref={canvasRef}></canvas>
                 </div>
             </div>
         </div>
