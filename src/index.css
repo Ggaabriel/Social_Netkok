@@ -17,38 +17,47 @@ body,
 .hero {
     font-size: 104px;
     font-weight: 800;
+    
 }
 h1 {
     font-size: 80px;
     font-weight: 800;
+    letter-spacing: -0.02em;
 }
 h2 {
     font-weight: 800;
     font-size: 64px;
+    letter-spacing: -0.02em;
 }
 h3 {
     font-weight: 800;
     font-size: 48px;
+    letter-spacing: -0.02em;
 }
 h4 {
     font-weight: 800;
     font-size: 32px;
+    letter-spacing: -0.02em;
 }
 .body1 {
     font-weight: 700;
     font-size: 24px;
+    letter-spacing: -0.02em;
 }
 .body2 {
     font-weight: 500;
     font-size: 20px;
+    letter-spacing: -0.02em;
 }
 .body2b {
     font-weight: 700;
     font-size: 20px;
+    letter-spacing: -0.02em;
 }
 .title {
     font-weight: 700;
     font-size: 18px;
+    letter-spacing: -0.01em;
 }
 .base {
     font-weight: 700;
