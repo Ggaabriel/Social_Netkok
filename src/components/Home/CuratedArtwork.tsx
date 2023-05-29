@@ -27,7 +27,9 @@ const CuratedArtwork = (props: Props) => {
                     <Placeholder className="stroke-gray03" />
                 </button>
             </div>
-            <div className="w-full aspect-square bg-gray-400"></div>
+            <div className="w-full aspect-square ">
+                <img src="topSale2.jpg" alt="" className="w-full h-full object-cover"/>
+            </div>
             <div className="w-full aspect-square bg-acc04">
                 <div className="w-full h-full px-5 md:px-16 py-16 flex flex-col justify-between">
                     <div className="w-full grid grid-cols-2 md:grid-cols-3 h-20 bg-mainWhite  items-center  justify-items-center rounded-xl">
