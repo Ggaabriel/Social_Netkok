@@ -13,6 +13,10 @@ const CuratedArtwork = (props: Props) => {
                     <br />
                     Artwork.
                 </h1>
+                
+                
+
+
                 <div className=" bg-acc06 m:min-w-[192px] m:h-[72px] max-m:min-w-[128px] max-m:h-[44px] max-s:w-[128px] rounded-full flex justify-center items-center s:my-8">
                     <Arrow className="w-[65%] h-[40%]" />
                 </div>
