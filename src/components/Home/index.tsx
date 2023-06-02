@@ -5,111 +5,102 @@ import Artists from "./Artists";
 import CuratedArtwork from "./CuratedArtwork";
 
 import TopSale from "./TopSale";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { useAppSelector } from "../../hooks/useAppSelector";
 type Props = {};
 
 const Home = (props: Props) => {
     const scroll = useRef<HTMLDivElement>(null);
     const collection = useRef<HTMLDivElement>(null);
     const collections = useRef<HTMLDivElement>(null);
-    
+    const dispatch = useAppDispatch();
+    const home = useAppSelector((state) => state.home);
     const scrollLeft = () => {
         if (scroll.current && collection.current) {
-            const currentCollectionWidth = collection.current.offsetWidth
-            const increaseNumberToDivisible = (number: number): number => {
-                let count = 0;
-                if (number % currentCollectionWidth === 0) {
-                    number--;
-                    count--;
-                }
-                if (!Number.isInteger(number)) {
-                  number = Math.floor(number);
-                }
-              
-                if (number === 0) {
-                  number--;
-                  count--;
-                }
-              
-                while (number % currentCollectionWidth !== 0) {
-                  number--;
-                  count--;
-                  console.log(count);
-                }
-              
-                return count;
-              };
-
-
-            scroll.current.scrollBy({
-                left: increaseNumberToDivisible(scroll.current.scrollLeft),
-                behavior: "smooth",
-            });
-
+          const currentCollectionWidth = collection.current.offsetWidth;
+          const currentScroll = scroll.current;
+          const { paddingLeft} = getComputedStyle(currentScroll);
+          const paddingValue = (+paddingLeft.replace(/\D/g, ''));
+      
+          const increaseNumberToDivisible = (number: number): number => {
+            let count = 0;
+      
+            const targetValue = currentCollectionWidth;
+      
+            if (!Number.isInteger(number)) {
+              number = Math.floor(number);
+            }
+      
+            if (number % targetValue === 0) {
+              number--;
+              count--;
+            }
+      
+            if (number === 0) {
+              number--;
+              count--;
+            }
+      
+            while (number % targetValue !== 0) {
+              number--;
+              count--;
+              console.log(count);
+            }
+      
+            return count;
+          };
+      
+          scroll.current.scrollBy({
+            left: increaseNumberToDivisible(scroll.current.scrollLeft - paddingValue),
+            behavior: "smooth",
+          });
         }
-    };
+      };
+      
+      
     const scrollRight = () => {
-        
         if (scroll.current && collections.current && collection.current) {
-            const currentCollectionWidth = collection.current.offsetWidth
+            const currentCollectionWidth = collection.current.offsetWidth;
             const currentScroll = scroll.current;
-            const currentCollections = collections.current;
+            const { paddingLeft} = getComputedStyle(currentScroll);
+            const paddingValue = (+paddingLeft.replace(/\D/g, ''));
             const increaseNumberToDivisible = (number: number): number => {
                 let count = 0;
-       
                 let totalScrollWidth = currentScroll?.scrollWidth - currentScroll.offsetWidth;
-                // let firstClickWidth =   totalScrollWidth - Math.floor(totalScrollWidth / currentCollectionWidth) * currentCollectionWidth;//395
-                const firstClickWidth = Math.floor(totalScrollWidth / currentCollectionWidth) * currentCollectionWidth - totalScrollWidth || currentCollectionWidth;
-                const targetValue = Math.ceil(number / currentCollectionWidth) * currentCollectionWidth + Math.abs(firstClickWidth);
+                const firstClickWidth =
+                    Math.floor(totalScrollWidth / currentCollectionWidth) * currentCollectionWidth - totalScrollWidth + paddingValue ||
+                    currentCollectionWidth;
+                const targetValue =
+                    Math.ceil(number / currentCollectionWidth) * currentCollectionWidth + Math.abs(firstClickWidth);
+                if (!Number.isInteger(number)) {
+                    number = Math.floor(number);
+                }
+
                 if (number % targetValue === 0) {
                     number++;
                     count++;
                 }
-                if (!Number.isInteger(number)) {
-                  number = Math.floor(number);
-                }
-              
+
                 if (number === 0) {
-                  number++;
-                  count++;
+                    number++;
+                    count++;
                 }
 
-            
                 while (number % targetValue !== 0) {
-                  number++;
-                  count++;
+                    number++;
+                    count++;
                 }
                 console.log(currentScroll?.scrollWidth - currentScroll.offsetWidth); // настоящая ширина скролла
-                
-                return count;
-              };
 
+                return count;
+            };
 
             scroll.current.scrollBy({
-                left: increaseNumberToDivisible(scroll.current.scrollLeft),
+                left: increaseNumberToDivisible(scroll.current.scrollLeft ),
                 behavior: "smooth",
             });
         }
     };
-    // useEffect(() => {
-    //     const currentScroll = scroll.current;
-    //     const currentCollections = collections.current;
-    //     if (currentScroll === null) return;
-    //     if (currentCollections === null) return;
-
-    //     const handleScroll = () => {
-    //         console.log(currentScroll.scrollLeft);
-    //         console.log(currentScroll.offsetWidth); //ширина блока с блоками
-    //         console.log(currentCollections.offsetWidth / 2 + (1600 - currentScroll.offsetWidth)); //максимальная точка скролла с учетом ширины
-    //         console.log(currentCollections.offsetWidth / 2);
-    //     };
-
-    //     currentScroll.addEventListener("scroll", handleScroll);
-
-    //     return () => {
-    //         currentScroll.removeEventListener("scroll", handleScroll);
-    //     };
-    // }, [scroll]);
-
     return (
         <div className="bg-mainWhite w-full text-textColor">
             <CuratedArtwork />
@@ -117,7 +108,7 @@ const Home = (props: Props) => {
             <TopSale />
             <div className="mb-[80px]">
                 <div className="flex justify-between px-5 md:px-16 py-5 md:py-16 max-s:flex-col">
-                    <h1 className="max-md:text-[56px] max-s:text-[48px]" >Curated collections.</h1>
+                    <h1 className="max-md:text-[56px] max-s:text-[48px]">Curated collections.</h1>
                     <div className="w-[130px] flex justify-between">
                         <div
                             onClick={scrollLeft}
@@ -133,18 +124,31 @@ const Home = (props: Props) => {
                         </div>
                     </div>
                 </div>
-                <div className="w-full overflow-auto collections pb-[80px]" ref={scroll}>
-                    <div ref={collections} className=" flex w-fit">
-                        {[...Array(8)].map(() => {
+                <div className=" w-full overflow-auto collections pb-[80px] relative px-0 md:px-[44px]" ref={scroll}>
+                    <div ref={collections} className="flex w-fit">
+                        {home.collections.map((elem, i) => {
                             return (
                                 <div
                                     ref={collection}
-                                    className={` flex-grow w-[400px] border-2 border-black h-[400px] ${
-                                        [`bg-red-600`, `bg-yellow-600`, `bg-green-600`][
-                                            Math.floor(Math.random() * (2 - 0 + 1)) + 0
-                                        ]
-                                    }`}
-                                ></div>
+                                    className={` w-[480px] max-s:w-[100vw] aspect-[1/1.2]`}
+                                >
+                                    <div
+                                        className={`h-full max-s:mx-[10px] s:mx-5 grid gap-[10px]`}
+                                    >
+                                        <div className="bg-textColor w-full aspect-square rounded-2xl"></div>
+                                        <div className="w-full h-fit grid grid-cols-3 gap-[10px]">
+                                            <div className="bg-acc04 w-full aspect-square rounded-2xl">
+
+                                            </div>
+                                            <div className="bg-acc02 w-full aspect-square rounded-2xl">
+
+                                            </div>
+                                            <div className="bg-acc06  w-full aspect-square rounded-2xl flex items-center justify-center body1">
+                                                +{elem.nfts.length - 3}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             );
                         })}
                     </div>
