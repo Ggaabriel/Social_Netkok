@@ -12,7 +12,7 @@ const TopSale = (props: Props) => {
     return (
         <div
             style={{ backgroundColor: `${backgroundColor}` }}
-            className={`w-full s:h-[1000px] grid s:grid-cols-2 px-5 md:px-16 items-center`}
+            className={`w-full s:h-[584px] md:h-[1000px] grid s:grid-cols-2 px-5 md:px-16 items-center`}
         >
             <div className="w-full s:max-w-[500px] h-full max-h-[500px] flex flex-col justify-evenly s:pr-5">
                 <div>

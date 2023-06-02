@@ -11,7 +11,7 @@ type Props = {
 const Header = ({ setIsMenu, isMenu }: Props) => {
     const location = useLocation();
     return (
-        <header className="fixed max-w-[1600px] mx-auto flex justify-between items-center  w-full h-24 z-20 px-10">
+        <header className="absolute max-w-[1600px] mx-auto flex justify-between items-center  w-full h-24 z-20 px-10">
             <div className={`flex items-center w-full h-[inherit] s:border-r border-b  ${location.pathname === `/` ? `border-b-mainBlack s:border-r-mainBlack/50`: `border-b-mainWhite/50 s:border-r-mainWhite/50`}`}>
                 <NavLink to={"/"} className="flex items-center">
                     <Logo className={` ${location.pathname === `/` ? `fill-mainBlack`:`fill-mainWhite`}`} />
